@@ -1,6 +1,6 @@
-# LIFX Color Cycle
+# LIFX Halloween
 
-Smoothly Color Cycle a Group of LIFX bulbs
+Flash a random light in a Group of LIFX bulbs
 
 ```shell
 yarn start
