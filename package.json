@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "api": "node index.js",
+    "api:debug": "node --inspect index.js",
+    "api:mon:debug": "nodemon --inspect index.js",
+    "api:mon": "nodemon index.js",
+    "start": "npm run api"
+  },
+  "engines": {
+    "node": "8.5.0",
+    "npm": "5.4.1"
+  },
+  "dependencies": {
+    "node-fetch": "^1.7.3",
+    "nodemon": "^1.12.1",
+    "rxjs": "^5.4.3"
+  }
+}
