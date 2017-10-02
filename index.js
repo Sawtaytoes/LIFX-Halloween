@@ -14,21 +14,17 @@ const headers = {
 	'Content-Type': 'application/json',
 }
 
-const spookyLightInterval = 10000
-
 const getCycles = () => Math.ceil(Math.random() * 3)
-const getPeriod = () => Math.random()
+const getPeriod = () => 1
 
-const doScaryLightFlash = () => (
+const doScaryLightFlash = colorSet => (
 	fetch(
 		`${lifxApi}v1/lights/${config.getLifxSelector()}:random/effects/breathe`,
 		{
 			body: (
 				JSON.stringify({
-					// hue:120 saturation:1.0 brightness:0.5
-					color: 'purple',
+					...colorSet,
 					cycles: getCycles(),
-					from_color: 'orange',
 					period: getPeriod(),
 					// peak: 0,
 					// power_on: false,
@@ -48,8 +44,26 @@ const getDataFromPromise = promise => (
 	)
 )
 
+const colors = {
+	orange: 'hue:38 saturation:1.0 brightness:1.0',
+	orangeDark: 'hue:38 saturation:1.0 brightness:0.3',
+	purple: 'hue:278 saturation:1.0 brightness:1.0',
+	purpleDark: 'hue:278 saturation:1.0 brightness:0.3',
+}
+
+const colorSets = [{
+	color: colors.orangeDark,
+	from_color: colors.orange,
+}, {
+	color: colors.purpleDark,
+	from_color: colors.purple,
+}]
+
+const getRandomColorSet = () => colorSets[Math.floor(Math.random() * 2)]
+
 Rx.Observable
-.interval(spookyLightInterval)
+.interval(10000)
+.map(getRandomColorSet)
 .map(doScaryLightFlash)
 .switchMap(getDataFromPromise)
 .subscribe(logger.log, logger.logError)
