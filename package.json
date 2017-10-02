@@ -3,9 +3,9 @@
   "scripts": {
     "api": "node index.js",
     "api:debug": "node --inspect index.js",
-    "api:mon:debug": "nodemon --inspect index.js",
-    "api:mon": "nodemon index.js",
-    "start": "npm run api"
+    "api:watch:debug": "nodemon --inspect index.js",
+    "api:watch": "nodemon index.js",
+    "start": "npm run api:watch"
   },
   "engines": {
     "node": "8.5.0",
