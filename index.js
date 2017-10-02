@@ -16,31 +16,11 @@ const headers = {
 
 const spookyLightInterval = 10000
 
-const getLights = selector => (
-	// Promise.resolve({ json: () => Promise.resolve([{
-	// 	id: 'd073d52390ab',
-	// }, {
-	// 	id: 'd073d52346e8',
-	// }, {
-	// 	id: 'd073d522ef06',
-	// }]) })
-	fetch(
-		`${lifxApi}v1/lights/${selector}`,
-		{
-			headers,
-			method: 'GET',
-		}
-	)
-)
 
-const getRandomLightIndex = lights => Math.floor(Math.random() * lights.length)
-
-const getLightId = lights => index => lights[index].id
-
-const doScaryLightFlash = lightId => (
+const doScaryLightFlash = () => (
 	// Promise.resolve({ json: () => Promise.resolve(lightId) })
 	fetch(
-		`${lifxApi}v1/lights/id:${lightId}/effects/breathe`,
+		`${lifxApi}v1/lights/${config.getLifxSelector()}:random/effects/breathe`,
 		{
 			body: (
 				JSON.stringify({
@@ -66,22 +46,8 @@ const getDataFromPromise = promise => (
 	)
 )
 
-const startSpookyLights = lights => (
-	Rx.Observable
-	.interval(spookyLightInterval)
-	.switchMapTo(
-		Rx.Observable
-		.of(lights)
-		.map(getRandomLightIndex)
-		.map(getLightId(lights))
-	)
-	.map(doScaryLightFlash)
-	.switchMap(getDataFromPromise)
-	.subscribe(logger.log, logger.logError)
-)
-
 Rx.Observable
-.of(config.getLifxSelector())
-.map(getLights)
+.interval(spookyLightInterval)
+.map(doScaryLightFlash)
 .switchMap(getDataFromPromise)
-.subscribe(startSpookyLights)
+.subscribe(logger.log, logger.logError)
