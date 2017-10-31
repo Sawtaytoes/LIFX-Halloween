@@ -60,7 +60,13 @@ const colorSets = [{
 	from_color: colors.purple,
 }]
 
-const getRandomColorSet = () => colorSets[Math.floor(Math.random() * 2)]
+const getColorSetAtIndex = index => colorSets[index]
+
+const getRandomColorSetIndex = () => (
+	Math.floor(
+		Math.random() * colorSets.length
+	)
+)
 
 const currentYear = moment().format('YYYY')
 
@@ -77,7 +83,8 @@ Rx.Observable
 .map(isHalloween)
 .do(console.log.bind(console, 'isHalloween:'))
 .filter(Boolean)
-.map(getRandomColorSet)
+.map(getRandomColorSetIndex)
+.map(getColorSetAtIndex)
 .map(doScaryLightFlash)
 .switchMap(getDataFromPromise)
 .subscribe(logger.log, logger.logError)
