@@ -1,7 +1,6 @@
-const dir = require(`${global.baseDir}global-dirs`)
 let configCustom = {}
 try {
-	configCustom = require(`${dir.configs}config`)
+	configCustom = require('configs/config')
 } catch (e) {
 	// Do Nothing
 }

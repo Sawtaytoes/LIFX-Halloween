@@ -1,13 +1,11 @@
+require('app-module-path').addPath(__dirname)
+
 const fetch = require('node-fetch')
 const moment = require('moment')
 const Rx = require('rxjs/Rx')
 
-// Global Dir Hack
-global.baseDir = `${__dirname}/`
-
-const dir = require(`${global.baseDir}global-dirs`)
-const config = require(`${dir.configs}config-settings`)
-const logger = require(`${dir.utils}logger`)
+const config = require('configs')
+const logger = require('utils/logger')
 
 const lifxApi = 'https://api.lifx.com/'
 const headers = {
@@ -18,9 +16,11 @@ const headers = {
 const getCycles = () => Math.ceil(Math.random() * 3)
 const getPeriod = () => 1
 
+const lifxEndpoint = `${lifxApi}v1/lights/${config.getLifxSelector()}:random/effects/breathe`
+
 const doScaryLightFlash = colorSet => (
 	fetch(
-		`${lifxApi}v1/lights/${config.getLifxSelector()}:random/effects/breathe`,
+		lifxEndpoint,
 		{
 			body: (
 				JSON.stringify({
