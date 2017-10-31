@@ -1,11 +1,11 @@
 {
   "private": true,
   "scripts": {
-    "api": "node index.js",
-    "api:debug": "node --inspect index.js",
-    "api:watch:debug": "nodemon --inspect index.js",
-    "api:watch": "nodemon index.js",
-    "start": "npm run api:watch"
+    "server": "node index.js",
+    "server:debug": "node --inspect index.js",
+    "server:watch:debug": "nodemon --inspect index.js",
+    "server:watch": "nodemon index.js",
+    "start": "npm run server:watch"
   },
   "engines": {
     "node": "^8.5.0",
