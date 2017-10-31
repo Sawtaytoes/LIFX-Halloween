@@ -1,4 +1,5 @@
 const fetch = require('node-fetch')
+const moment = require('moment')
 const Rx = require('rxjs/Rx')
 
 // Global Dir Hack
@@ -61,8 +62,21 @@ const colorSets = [{
 
 const getRandomColorSet = () => colorSets[Math.floor(Math.random() * 2)]
 
+const currentYear = moment().format('YYYY')
+
+const isHalloween = () => (
+	moment()
+	.isBetween(
+		`${currentYear}-10-31 16:00`,
+		`${currentYear}-10-31 23:30`
+	)
+)
+
 Rx.Observable
 .interval(10000)
+.map(isHalloween)
+.do(console.log.bind(console, 'isHalloween:'))
+.filter(Boolean)
 .map(getRandomColorSet)
 .map(doScaryLightFlash)
 .switchMap(getDataFromPromise)
