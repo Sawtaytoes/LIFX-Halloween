@@ -46,8 +46,8 @@ const getDataFromPromise = promise => (
 )
 
 const colors = {
-	orange: 'hue:38 saturation:1.0 brightness:1.0',
-	orangeDark: 'hue:38 saturation:1.0 brightness:0.3',
+	orange: 'hue:43 saturation:1.0 brightness:1.0',
+	orangeDark: 'hue:43 saturation:1.0 brightness:0.3',
 	purple: 'hue:278 saturation:1.0 brightness:1.0',
 	purpleDark: 'hue:278 saturation:1.0 brightness:0.3',
 }
