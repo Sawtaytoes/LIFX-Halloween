@@ -5,7 +5,9 @@
     "server:debug": "node --inspect index.js",
     "server:watch:debug": "nodemon --inspect index.js",
     "server:watch": "nodemon index.js",
-    "start": "npm run server:watch"
+    "start": "npm run server:watch",
+    "test": "node ./utils/flashRandomLight.test.js",
+    "test:watch": "nodemon ./utils/flashRandomLight.test.js"
   },
   "engines": {
     "node": "^8.5.0",
