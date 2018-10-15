@@ -7,7 +7,8 @@ const isHalloween = require('utils/isHalloween')
 const logger = require('utils/logger')
 
 flashRandomLight(
-	Rx.Observable
+	Rx
+	.Observable
 	.interval(10000)
 	.map(isHalloween)
 )
