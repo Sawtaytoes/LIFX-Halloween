@@ -1,5 +1,3 @@
-require('app-module-path').addPath(__dirname)
-
 const moment = require('moment')
 
 const currentYear = moment().format('YYYY')
