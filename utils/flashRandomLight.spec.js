@@ -27,10 +27,7 @@ const integrationTests = [
 		)
 	},
 
-	(
-		testComplete,
-		testFailed,
-	) => {
+	testComplete => {
 		console
 		.info("Executing 'is Halloween' test.")
 
