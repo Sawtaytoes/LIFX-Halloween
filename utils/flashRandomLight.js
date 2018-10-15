@@ -1,6 +1,7 @@
 require('app-module-path').addPath(__dirname)
 
 const fetch = require('node-fetch')
+const Rx = require('rxjs/Rx')
 
 const config = require('configs')
 
