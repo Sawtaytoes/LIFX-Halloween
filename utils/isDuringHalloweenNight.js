@@ -1,7 +1,7 @@
 const { getYear, isWithinInterval } = require('date-fns/fp')
 
 const isDuringHalloweenNight = (
-	date,
+	date = new Date(),
 ) => (
 	isWithinInterval({
 		end: (

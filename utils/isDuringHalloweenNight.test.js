@@ -1,5 +1,3 @@
-require('../directory')
-
 const test = require('ava')
 
 const isDuringHalloweenNight = require('./isDuringHalloweenNight')
@@ -53,5 +51,12 @@ test('Correct Date With Correct Time', t => {
 	t.true(
 		value,
 		"Date is during Halloween."
+	)
+})
+
+test('Optionally Takes a Date', t => {
+	t.notThrows(
+		() => isDuringHalloweenNight(),
+		"Doesn't throw an error when no date is passed."
 	)
 })
