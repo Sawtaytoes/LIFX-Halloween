@@ -1,5 +1,6 @@
 const fetch = require('node-fetch')
-const Rx = require('rxjs/Rx')
+const { filter, map, switchMap } = require('rxjs/operators')
+const { fromPromise } = require('rxjs')
 
 const config = require('$config')
 const getRandomIndexFromItemCount = require('./getRandomIndexFromItemCount')
@@ -34,9 +35,10 @@ const doScaryLightFlash = colorSet => (
 	)
 )
 
-const getDataFromPromise = promise => (
-	Rx.Observable
-	.fromPromise(
+const getDataFromPromise = (
+	promise,
+) => (
+	fromPromise(
 		promise
 		.then(response => response.json())
 	)
@@ -66,15 +68,16 @@ const getRandomColorSetIndex = () => (
 )
 
 const flashRandomLight = (
-	observable,
+	action$,
 ) => (
-	observable
-	.do(console.log.bind(console, 'isHalloween:'))
-	.filter(Boolean)
-	.map(getRandomColorSetIndex)
-	.map(getColorSetAtIndex)
-	.map(doScaryLightFlash)
-	.switchMap(getDataFromPromise)
+	action$
+	.pipe(
+		filter(Boolean),
+		map(getRandomColorSetIndex),
+		map(getColorSetAtIndex),
+		map(doScaryLightFlash),
+		switchMap(getDataFromPromise),
+	)
 )
 
 module.exports = flashRandomLight

@@ -1,15 +1,19 @@
 require('@ghadyani-framework/setup-module-aliases')(__dirname)
 
-const Rx = require('rxjs/Rx')
+const { interval } = require('rxjs')
+const { map, tap } = require('rxjs/operators')
 
 const flashRandomLight = require('$utils/flashRandomLight')
 const isDuringHalloweenNight = require('$utils/isDuringHalloweenNight')
 
 flashRandomLight(
-	Rx
-	.Observable
-	.interval(10000)
-	.map(isDuringHalloweenNight)
+	interval(10000)
+	.pipe(
+		map(isDuringHalloweenNight),
+		tap(() => (
+			console.info('isDuringHalloweenNight:')
+		)),
+	)
 )
 .subscribe(
 	console.log,
