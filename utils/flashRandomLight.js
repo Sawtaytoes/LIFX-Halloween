@@ -60,9 +60,9 @@ const colorSets = [{
 const getColorSetAtIndex = index => colorSets[index]
 
 const getRandomColorSetIndex = () => (
-	getRandomIndexFromItemCount({
-		numberOfItems: colorSets.length,
-	})
+	getRandomIndexFromItemCount(
+		colorSets.length,
+	)
 )
 
 const flashRandomLight = (

@@ -2,27 +2,28 @@ const test = require('ava')
 
 const getRandomIndexFromItemCount = require('./getRandomIndexFromItemCount')
 
-test('Zero Items', t => {
-	const value = (
-		getRandomIndexFromItemCount({
-			numberOfItems: 0,
-			randomizer: () => 1,
-		})
+test('No Item Count', t => {
+	t.throws(
+		getRandomIndexFromItemCount,
+		Error,
+		"With no item count, throws an error."
 	)
+})
 
-	t.is(
-		value,
-		0,
-		"With no items, the value is 0."
+test('Zero Items', t => {
+	t.throws(
+		getRandomIndexFromItemCount,
+		Error,
+		"With zero items, throws an error."
 	)
 })
 
 test('One Item', t => {
 	const value = (
-		getRandomIndexFromItemCount({
-			numberOfItems: 1,
-			randomizer: () => 1,
-		})
+		getRandomIndexFromItemCount(
+			1,
+			{ randomizer: () => 1 }
+		)
 	)
 
 	t.is(
@@ -34,10 +35,10 @@ test('One Item', t => {
 
 test('One Item and Float Randomizer', t => {
 	const value = (
-		getRandomIndexFromItemCount({
-			numberOfItems: 1,
-			randomizer: () => 1.0,
-		})
+		getRandomIndexFromItemCount(
+			1,
+			{ randomizer: () => 1.0 }
+		)
 	)
 
 	t.is(
@@ -49,10 +50,10 @@ test('One Item and Float Randomizer', t => {
 
 test('Ten Items and a Float Randomizer', t => {
 	const value = (
-		getRandomIndexFromItemCount({
-			numberOfItems: 10,
-			randomizer: () => 0.2,
-		})
+		getRandomIndexFromItemCount(
+			10,
+			{ randomizer: () => 0.2 }
+		)
 	)
 
 	t.is(
@@ -64,10 +65,10 @@ test('Ten Items and a Float Randomizer', t => {
 
 test('Ten Items with Incorrect Randomizer', t => {
 	const value = (
-		getRandomIndexFromItemCount({
-			numberOfItems: 10,
-			randomizer: () => 2,
-		})
+		getRandomIndexFromItemCount(
+			10,
+			{ randomizer: () => 2 }
+		)
 	)
 
 	t.is(
@@ -79,9 +80,9 @@ test('Ten Items with Incorrect Randomizer', t => {
 
 test('Randomizer is Optional', t => {
 	const value = (
-		getRandomIndexFromItemCount({
-			numberOfItems: 2,
-		})
+		getRandomIndexFromItemCount(
+			2,
+		)
 	)
 
 	t.true(
