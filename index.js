@@ -10,8 +10,12 @@ flashRandomLight(
 	interval(10000)
 	.pipe(
 		map(isDuringHalloweenNight),
-		tap(() => (
-			console.info('isDuringHalloweenNight:')
+		tap(isDuringHalloweenNight => (
+			console
+			.info(
+				'isDuringHalloweenNight:',
+				isDuringHalloweenNight,
+			)
 		)),
 	)
 )
