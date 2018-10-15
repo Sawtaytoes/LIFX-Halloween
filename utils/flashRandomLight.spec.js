@@ -1,6 +1,6 @@
 require('../directory')
 
-const Rx = require('rxjs/Rx')
+const { of } = require('rxjs')
 
 const flashRandomLight = require('./flashRandomLight')
 
@@ -10,10 +10,9 @@ const integrationTests = [
 		.info("Executing 'is not Halloween' test.")
 
 		const subscriber = (
-			flashRandomLight(
-				Rx
-				.Observable
-				.of(false)
+			of(false)
+			.pipe(
+				flashRandomLight(),
 			)
 			.subscribe(console.log)
 		)
@@ -32,10 +31,9 @@ const integrationTests = [
 		.info("Executing 'is Halloween' test.")
 
 		const subscriber = (
-			flashRandomLight(
-				Rx
-				.Observable
-				.of(true)
+			of(true)
+			.pipe(
+				flashRandomLight(),
 			)
 			.subscribe(console.log)
 		)
