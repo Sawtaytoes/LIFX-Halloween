@@ -1,13 +1,11 @@
-const moment = require('moment')
+const isDuringHalloweenNight = require('./isDuringHalloweenNight')
 
-const currentYear = moment().format('YYYY')
-
-const isHalloween = () => (
-	moment()
-	.isBetween(
-		`${currentYear}-10-31 16:00`,
-		`${currentYear}-10-31 23:30`
-	)
+const isHalloween = (
+	date,
+) => (
+	date instanceof Date
+	? isDuringHalloweenNight(date)
+	: isDuringHalloweenNight(new Date())
 )
 
 module.exports = isHalloween
