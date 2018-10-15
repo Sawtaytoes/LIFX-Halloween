@@ -56,7 +56,12 @@ test('Correct Date With Correct Time', t => {
 
 test('Optionally Takes a Date', t => {
 	t.notThrows(
-		() => isDuringHalloweenNight(),
+		isDuringHalloweenNight,
 		"Doesn't throw an error when no date is passed."
+	)
+
+	t.true(
+		typeof isDuringHalloweenNight() === 'boolean',
+		"Returns a boolean even without a date passed."
 	)
 })
