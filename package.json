@@ -1,13 +1,14 @@
 {
   "private": true,
   "scripts": {
+    "oldtest": "node ./utils/flashRandomLight.test.js",
     "server": "node index.js",
     "server:debug": "node --inspect index.js",
-    "server:watch:debug": "nodemon --inspect index.js",
     "server:watch": "nodemon index.js",
+    "server:watch:debug": "nodemon --inspect index.js",
     "start": "npm run server:watch",
-    "test": "node ./utils/flashRandomLight.test.js",
-    "test:watch": "nodemon ./utils/flashRandomLight.test.js"
+    "test": "ava",
+    "test:watch": "ava --watch"
   },
   "engines": {
     "node": ">=8.11.4",
@@ -25,7 +26,7 @@
       }
     },
     "files": [
-      "redux/**/*.test.js"
+      "utils/**/*.test.js"
     ],
     "sources": [
       "**/*.js"

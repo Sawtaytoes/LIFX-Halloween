@@ -1,2 +1,1 @@
-require('app-module-path')
-.addPath(__dirname)
+require('@ghadyani-framework/setup-module-aliases')(__dirname)

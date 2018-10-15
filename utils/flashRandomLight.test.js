@@ -1,11 +1,8 @@
 require('../directory')
 
-const assert = require('assert')
 const Rx = require('rxjs/Rx')
 
-const config = require('configs')
 const flashRandomLight = require('./flashRandomLight')
-const lifxApi = require('./lifxApi')
 
 const integrationTests = [
 	testComplete => {

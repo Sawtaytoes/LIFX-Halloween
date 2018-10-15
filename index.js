@@ -1,10 +1,10 @@
-require('app-module-path').addPath(__dirname)
+require('@ghadyani-framework/setup-module-aliases')(__dirname)
 
 const Rx = require('rxjs/Rx')
 
-const flashRandomLight = require('utils/flashRandomLight')
-const isHalloween = require('utils/isHalloween')
-const logger = require('utils/logger')
+const flashRandomLight = require('$utils/flashRandomLight')
+const isHalloween = require('$utils/isHalloween')
+const logger = require('$utils/logger')
 
 flashRandomLight(
 	Rx
