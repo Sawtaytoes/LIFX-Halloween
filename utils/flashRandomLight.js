@@ -4,8 +4,8 @@ const fetch = require('node-fetch')
 const Rx = require('rxjs/Rx')
 
 const config = require('configs')
+const lifxApi = require('./lifxApi')
 
-const lifxApi = 'https://api.lifx.com/'
 const headers = {
 	Authorization: `Bearer ${config.getApiToken()}`,
 	'Content-Type': 'application/json',
