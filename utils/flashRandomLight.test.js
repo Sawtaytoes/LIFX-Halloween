@@ -1,24 +1,16 @@
 require('../directory')
 
 const assert = require('assert')
+const evilDns = require('evil-dns')
 const http = require('http')
-const httpProxy = require('http-proxy')
+const https = require('https')
 const Rx = require('rxjs/Rx')
 
 const config = require('configs')
 const flashRandomLight = require('./flashRandomLight')
 const lifxApi = require('./lifxApi')
 
-const portNumber = 3000
-
-const createHttpProxyServer = () => (
-	new httpProxy
-	.createProxyServer({
-		host: 'localhost',
-		port: portNumber,
-		target: `${lifxApi}v1/lights/${config.getLifxSelector()}:random/effects/breathe`
-	})
-)
+const portNumber = 443
 
 const integrationTests = [
 	testComplete => {
@@ -41,55 +33,83 @@ const integrationTests = [
 		testComplete,
 		testFailed,
 	) => {
-		const httpProxyServer = (
-			createHttpProxyServer()
-			.on(
-				'error',
-				testFailed,
-			)
+		evilDns
+		.add(
+			'api.lifx.com',
+			'127.0.0.1',
 		)
 
 		const httpServer = (
-			http
+			https
 			.createServer((
 				req,
 				res,
 			) => {
-				console.log(req)
+				console.log('hi')
+				// console.log(req)
+
+				// req
+				// .on('data', function (data) {
+				// 	body += data;
+				// 	console.log("Partial body: " + body);
+				// })
+				// req
+				// .on('end', function () {
+				// 	console.log("Body: " + body);
+				// })
 
 				res
-				.end()
+				.writeHead(
+					200,
+					{ 'Content-Type': 'application/json' }
+				)
+
+				res
+				.end('{}')
 
 				new Promise(
-					httpProxyServer
+					httpServer
 					.close
-					.bind(httpProxyServer)
+					.bind(httpServer)
 				)
-				.then(() => (
-					new Promise(
-						httpServer
-						.close
-						.bind(httpServer)
-					)
-				))
+				.then(() => {
+					evilDns
+					.clear()
+				})
 				.then(testComplete)
 			})
 		)
 
 		httpServer
-		.listen(portNumber)
+		.addListener('connect', function (req, socket, bodyhead) {
+			console.log('herekljerj')
+		})
+		.addListener('socket', function (req, socket, bodyhead) {
+			console.log('herekljerj')
+		})
+		httpServer
+		.listen(
+			portNumber,
+			error => {
+				error
+				&& testFailed(error)
 
-		const subscriber = (
-			flashRandomLight(
-				Rx
-				.Observable
-				.of(true)
-			)
-			.subscribe(console.log)
+				const subscriber = (
+					flashRandomLight(
+						Rx
+						.Observable
+						.of(true)
+					)
+					.subscribe(console.log)
+				)
+
+				subscriber
+				.unsubscribe()
+
+				// require('node-fetch')('http://api.lifx.com:443')
+				require('node-fetch')('https://api.lifx.com')
+			}
 		)
-
-		subscriber
-		.unsubscribe()
 	},
 ]
 
