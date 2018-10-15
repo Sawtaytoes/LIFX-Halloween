@@ -20,28 +20,28 @@ const lifxEndpoint = `${lifxApi}v1/lights/${config.getLifxSelector()}:random/eff
 
 const doScaryLightFlash = colorSet => (
   fetch(
-  lifxEndpoint,
-  {
-  body: (
-  JSON.stringify({
-  ...colorSet,
-  cycles: getCycles(),
-  period: getPeriod(),
-  // peak: 0,
-  // power_on: false,
-  })
-  ),
-  headers,
-  method: 'POST',
-  }
+    lifxEndpoint,
+    {
+      body: (
+        JSON.stringify({
+          ...colorSet,
+          cycles: getCycles(),
+          period: getPeriod(),
+          // peak: 0,
+          // power_on: false,
+        })
+      ),
+      headers,
+      method: 'POST',
+    }
   )
 )
 
 const getDataFromPromise = promise => (
   Rx.Observable
   .fromPromise(
-  promise
-  .then(response => response.json())
+    promise
+    .then(response => response.json())
   )
 )
 
@@ -73,8 +73,8 @@ const currentYear = moment().format('YYYY')
 const isHalloween = () => (
   moment()
   .isBetween(
-  `${currentYear}-10-31 16:00`,
-  `${currentYear}-10-31 23:30`
+    `${currentYear}-10-31 16:00`,
+    `${currentYear}-10-31 23:30`
   )
 )
 
