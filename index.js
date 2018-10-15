@@ -4,7 +4,6 @@ const Rx = require('rxjs/Rx')
 
 const flashRandomLight = require('$utils/flashRandomLight')
 const isDuringHalloweenNight = require('$utils/isDuringHalloweenNight')
-const logger = require('$utils/logger')
 
 flashRandomLight(
 	Rx
@@ -13,6 +12,6 @@ flashRandomLight(
 	.map(isDuringHalloweenNight)
 )
 .subscribe(
-	logger.log,
-	logger.logError,
+	console.log,
+	console.error,
 )
