@@ -13,9 +13,26 @@
     "node": ">=8.11.4",
     "yarn": ">=1.6.0"
   },
+  "_moduleAliases": {
+    "$config": "./config",
+    "$utils": "./utils"
+  },
+  "ava": {
+    "babel": {
+      "testOptions": {
+        "babelrc": false
+      }
+    },
+    "files": [
+      "redux/**/*.test.js"
+    ],
+    "sources": [
+      "**/*.js"
+    ]
   },
   "dependencies": {
     "app-module-path": "^2.2.0",
+    "@ghadyani-framework/setup-module-aliases": "^0.0.2",
     "ava": "^0.25.0",
     "date-fns": "^2.0.0-alpha.22",
     "eslint": "^5.7.0",
