@@ -15,6 +15,7 @@
   },
   "_moduleAliases": {
     "$config": "./config",
+    "$root": "./",
     "$utils": "./utils"
   },
   "ava": {
@@ -31,7 +32,8 @@
     ]
   },
   "dependencies": {
-    "app-module-path": "^2.2.0",
+    "@ghadyani-framework/eslint-config-base": "^0.0.3",
+    "@ghadyani-framework/eslint-config-node": "^0.0.3",
     "@ghadyani-framework/setup-module-aliases": "^0.0.2",
     "ava": "^0.25.0",
     "date-fns": "^2.0.0-alpha.22",
