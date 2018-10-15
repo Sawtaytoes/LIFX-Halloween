@@ -9,6 +9,9 @@ const lifxApi = require('./lifxApi')
 
 const integrationTests = [
 	testComplete => {
+		console
+		.info("Executing 'is not Halloween' test.")
+
 		const subscriber = (
 			flashRandomLight(
 				Rx
@@ -31,6 +34,9 @@ const integrationTests = [
 		testComplete,
 		testFailed,
 	) => {
+		console
+		.info("Executing 'is Halloween' test.")
+
 		const subscriber = (
 			flashRandomLight(
 				Rx
