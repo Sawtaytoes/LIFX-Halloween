@@ -2,6 +2,7 @@ const fetch = require('node-fetch')
 const Rx = require('rxjs/Rx')
 
 const config = require('$config')
+const getRandomIndexFromItemCount = require('./getRandomIndexFromItemCount')
 const lifxApi = require('./lifxApi')
 
 const headers = {
@@ -59,9 +60,9 @@ const colorSets = [{
 const getColorSetAtIndex = index => colorSets[index]
 
 const getRandomColorSetIndex = () => (
-	Math.floor(
-		Math.random() * colorSets.length
-	)
+	getRandomIndexFromItemCount({
+		numberOfItems: colorSets.length,
+	})
 )
 
 const flashRandomLight = (
