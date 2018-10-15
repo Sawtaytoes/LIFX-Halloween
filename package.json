@@ -10,8 +10,9 @@
     "test:watch": "nodemon ./utils/flashRandomLight.test.js"
   },
   "engines": {
-    "node": "^8.5.0",
-    "npm": "^5.4.1"
+    "node": ">=8.11.4",
+    "yarn": ">=1.6.0"
+  },
   },
   "dependencies": {
     "app-module-path": "^2.2.0",
