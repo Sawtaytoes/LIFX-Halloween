@@ -2,7 +2,9 @@ const errorWrapper = require('./errorWrapper')
 
 const getRandomIndexFromItemCount = (
 	numberOfItems,
-	dependencies = {},
+	dependencies = {
+		randomizer: Math.random,
+	},
 ) => (
 	errorWrapper(
 		(
@@ -13,7 +15,8 @@ const getRandomIndexFromItemCount = (
 	)(
 		Math
 		.floor(
-			(dependencies.randomizer || Math.random)() * numberOfItems
+			dependencies
+			.randomizer() * numberOfItems
 		)
 	)
 )
