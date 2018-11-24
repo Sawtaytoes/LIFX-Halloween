@@ -10,8 +10,8 @@ const flashRandomLight = () => (
 	pipe(
 		map(getRandomColorSetIndex),
 		map(getColorSetAtIndex),
-		map(doScaryLightFlash),
-		switchMap(getDataFromPromise),
+		switchMap(doScaryLightFlash),
+		map(getDataFromPromise),
 	)
 )
 
