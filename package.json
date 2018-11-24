@@ -1,10 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "server": "node index.js",
-    "server:debug": "eslint . --fix && node --inspect index.js",
-    "server:watch": "eslint . --fix && nodemon index.js",
-    "server:watch:debug": "eslint . --fix && nodemon --inspect index.js",
+    "server": "node app.js",
+    "server:debug": "eslint . --fix && node --inspect app.js",
+    "server:watch": "eslint . --fix && nodemon app.js",
+    "server:watch:debug": "eslint . --fix && nodemon --inspect app.js",
     "spec": "node ./utils/flashRandomLight.spec.js",
     "start": "yarn server:watch",
     "test": "eslint . && ava",
