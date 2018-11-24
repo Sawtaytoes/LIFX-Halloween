@@ -3,7 +3,14 @@ require('@ghadyani-framework/setup-module-aliases')(__dirname)
 const flashRandomLight = require('$utils/flashRandomLight')
 const isDuringHalloweenNight = require('$utils/isDuringHalloweenNight')
 
+const {
+	getTimeUntilHalloweenEnds,
+	getTimeUntilHalloweenStarts,
+} = require('$utils/halloweenTimes')
+
 module.exports = {
-	isDuringHalloweenNight,
 	flashRandomLight,
+	getTimeUntilHalloweenEnds,
+	getTimeUntilHalloweenStarts,
+	isDuringHalloweenNight,
 }

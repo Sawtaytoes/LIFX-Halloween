@@ -12,37 +12,14 @@ yarn start
 ### `flashRandomLight`
 Flashes a random light in the provided LIFX selector.
 
+### `getTimeUntilHalloweenEnds`
+Get the time remaining in milliseconds until Halloweens ends from the optionally given date.
+
+### `getTimeUntilHalloweenStarts`
+Get the time remaining in milliseconds until Halloweens starts from the optionally given date.
+
 ### `isDuringHalloweenNight`
 Returns a boolean if it's Halloween night.
 
 ## Example
-
-```js
-const { interval } = require('rxjs')
-const { filter, map, tap } = require('rxjs/operators')
-
-const {
-	flashRandomLight,
-	isDuringHalloweenNight,
-} = require('lifx-halloween')
-
-interval(10000)
-.pipe(
-	map(isDuringHalloweenNight),
-	tap(isDuringHalloweenNight => (
-		console
-		.info(
-			'isDuringHalloweenNight:',
-			isDuringHalloweenNight,
-		)
-	)),
-	filter(Boolean),
-	flashRandomLight(
-		config.getLifxSelector()
-	),
-)
-.subscribe(
-	console.log,
-	console.error,
-)
-```
+See [app.js](./app.js) for a working example.

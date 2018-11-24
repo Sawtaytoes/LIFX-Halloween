@@ -1,9 +1,9 @@
-const { map, switchMap } = require('rxjs/operators')
-const { pipe } = require('rxjs')
+const { catchError, map, switchMap } = require('rxjs/operators')
+const { of, pipe } = require('rxjs')
 
 const doScaryLightFlash = require('./doScaryLightFlash')
 const getColorSetAtIndex = require('./getColorSetAtIndex')
-const getDataFromPromise = require('./getDataFromPromise')
+const getJsonFromPromise = require('./getJsonFromPromise')
 const getRandomColorSetIndex = require('./getRandomColorSetIndex')
 
 const flashRandomLight = (
@@ -17,7 +17,16 @@ const flashRandomLight = (
 				lifxSelector,
 			)
 		),
-		map(getDataFromPromise),
+		switchMap(getJsonFromPromise),
+		catchError(error => {
+			console
+			.error(
+				error
+				.stack
+			)
+
+			return of(null)
+		})
 	)
 )
 

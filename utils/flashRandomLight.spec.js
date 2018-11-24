@@ -1,5 +1,6 @@
 require('../directory')
 
+const config = require('$config')
 const { of } = require('rxjs')
 
 const flashRandomLight = require('./flashRandomLight')
@@ -12,7 +13,10 @@ const reproducibleManualTests = [
 		const subscriber = (
 			of(false)
 			.pipe(
-				flashRandomLight(),
+				flashRandomLight(
+					config
+					.getLifxSelector()
+				),
 			)
 			.subscribe(console.log)
 		)
@@ -33,7 +37,10 @@ const reproducibleManualTests = [
 		const subscriber = (
 			of(true)
 			.pipe(
-				flashRandomLight(),
+				flashRandomLight(
+					config
+					.getLifxSelector()
+				),
 			)
 			.subscribe(console.log)
 		)

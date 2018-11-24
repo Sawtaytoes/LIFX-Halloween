@@ -1,4 +1,4 @@
-const { getYear } = require('date-fns/fp')
+const { differenceInMilliseconds, getYear } = require('date-fns/fp')
 
 const getHalloweenEndTime = (
 	date = new Date(),
@@ -16,7 +16,33 @@ const getHalloweenStartTime = (
 	)
 )
 
+const getTimeUntilHalloweenEnds = (
+	date = new Date(),
+) => (
+	differenceInMilliseconds(
+		getHalloweenEndTime(
+			date,
+		)
+	)(
+		date,
+	)
+)
+
+const getTimeUntilHalloweenStarts = (
+	date = new Date(),
+) => (
+	differenceInMilliseconds(
+		getHalloweenStartTime(
+			date,
+		)
+	)(
+		date,
+	)
+)
+
 module.exports = {
 	getHalloweenEndTime,
 	getHalloweenStartTime,
+	getTimeUntilHalloweenEnds,
+	getTimeUntilHalloweenStarts,
 }
