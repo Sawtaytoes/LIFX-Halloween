@@ -1,3 +1,3 @@
-const lifxApi = 'https://api.lifx.com/'
+const lifxApi = 'https://api.lifx.com'
 
 module.exports = lifxApi

@@ -21,7 +21,14 @@ const getCycles = () => (
 
 const getPeriod = () => 1
 
-const lifxEndpoint = `${lifxApi}v1/lights/${config.getLifxSelector()}:random/effects/breathe`
+const lifxEndpoint = (
+	lifxApi
+	.concat('/v1')
+	.concat('/lights')
+	.concat('/lights')
+	.concat(`/${config.getLifxSelector()}`)
+	.concat(':random/effects/breathe')
+)
 
 const doScaryLightFlash = (
 	colorSet,
