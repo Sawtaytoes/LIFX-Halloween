@@ -1,92 +1,10 @@
-const fetch = require('node-fetch')
-const { from, pipe } = require('rxjs')
 const { map, switchMap } = require('rxjs/operators')
+const { pipe } = require('rxjs')
 
-const config = require('$config')
-const lifxApi = require('./lifxApi')
-const pluckRandomNumberFromRange = require('./pluckRandomNumberFromRange')
-
-const headers = {
-	Authorization: `Bearer ${config.getApiToken()}`,
-	'Content-Type': 'application/json',
-}
-
-const getCycles = () => (
-	Math
-	.ceil(
-		Math
-		.random() * 3
-	)
-)
-
-const getPeriod = () => 1
-
-const lifxEndpoint = (
-	lifxApi
-	.concat('/v1')
-	.concat('/lights')
-	.concat('/lights')
-	.concat(`/${config.getLifxSelector()}`)
-	.concat(':random/effects/breathe')
-)
-
-const doScaryLightFlash = (
-	colorSet,
-) => (
-	fetch(
-		lifxEndpoint,
-		{
-			body: (
-				JSON.stringify({
-					...colorSet,
-					cycles: getCycles(),
-					period: getPeriod(),
-				})
-			),
-			headers,
-			method: 'POST',
-		}
-	)
-)
-
-const getDataFromPromise = (
-	promise,
-) => (
-	from(
-		promise
-		.then(response => (
-			response
-			.json()
-		))
-	)
-)
-
-const colors = {
-	orange: 'hue:43 saturation:1.0 brightness:1.0',
-	orangeDark: 'hue:43 saturation:1.0 brightness:0.3',
-	purple: 'hue:278 saturation:1.0 brightness:1.0',
-	purpleDark: 'hue:278 saturation:1.0 brightness:0.3',
-}
-
-const colorSets = [{
-	color: colors.orangeDark,
-	from_color: colors.orange,
-}, {
-	color: colors.purpleDark,
-	from_color: colors.purple,
-}]
-
-const getColorSetAtIndex = (
-	index,
-) => (
-	colorSets[index]
-)
-
-const getRandomColorSetIndex = () => (
-	pluckRandomNumberFromRange(
-		colorSets.length,
-	)
-)
+const doScaryLightFlash = require('./doScaryLightFlash')
+const getColorSetAtIndex = require('./getColorSetAtIndex')
+const getDataFromPromise = require('./getDataFromPromise')
+const getRandomColorSetIndex = require('./getRandomColorSetIndex')
 
 const flashRandomLight = () => (
 	pipe(
