@@ -7,7 +7,6 @@ const lifxEndpoint = (
 	lifxApi
 	.concat('/v1')
 	.concat('/lights')
-	.concat('/lights')
 	.concat(`/${config.getLifxSelector()}`)
 	.concat(':random/effects/breathe')
 )
