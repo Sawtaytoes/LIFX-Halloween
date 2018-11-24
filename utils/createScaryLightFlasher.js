@@ -20,7 +20,7 @@ const getPeriod = () => 1
 const createScaryLightFlasher = (
 	ajaxFetcher,
 ) => (
-	lifxSelector = config.getLifxSelector(),
+	lifxSelector,
 ) => (
 	colorSet = {},
 ) => (
