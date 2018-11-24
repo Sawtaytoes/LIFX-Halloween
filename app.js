@@ -18,21 +18,13 @@ const addOneYear = (
 	)
 )
 
-const getHalloweenCountdownObservable = (
+const getHalloweenFlasherObservable = (
 	date = new Date(),
 ) => (
 	timer(
 		getTimeUntilHalloweenStarts(
 			date,
 		)
-	)
-)
-
-const getHalloweenFlasherObservable = (
-	date = new Date(),
-) => (
-	getHalloweenCountdownObservable(
-		date
 	)
 	.pipe(
 		tap(() => (
