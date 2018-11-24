@@ -3,8 +3,8 @@ const { from, pipe } = require('rxjs')
 const { map, switchMap } = require('rxjs/operators')
 
 const config = require('$config')
-const getRandomIndexFromItemCount = require('./getRandomIndexFromItemCount')
 const lifxApi = require('./lifxApi')
+const pluckRandomNumberFromRange = require('./pluckRandomNumberFromRange')
 
 const headers = {
 	Authorization: `Bearer ${config.getApiToken()}`,
@@ -83,7 +83,7 @@ const getColorSetAtIndex = (
 )
 
 const getRandomColorSetIndex = () => (
-	getRandomIndexFromItemCount(
+	pluckRandomNumberFromRange(
 		colorSets.length,
 	)
 )
