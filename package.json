@@ -1,5 +1,8 @@
 {
-  "private": true,
+  "name": "lifx-halloween",
+  "version": "1.0.0",
+  "description": "Flash a random light in a Group of LIFX bulbs during Halloween.",
+  "license": "MITNFA",
   "scripts": {
     "server": "node app.js",
     "server:debug": "eslint . --fix && node --inspect app.js",
