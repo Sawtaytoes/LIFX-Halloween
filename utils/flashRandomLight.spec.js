@@ -4,7 +4,7 @@ const { of } = require('rxjs')
 
 const flashRandomLight = require('./flashRandomLight')
 
-const integrationTests = [
+const reproducibleManualTests = [
 	testComplete => {
 		console
 		.info("Executing 'is not Halloween' test.")
@@ -48,15 +48,17 @@ const integrationTests = [
 	},
 ]
 
-integrationTests
+reproducibleManualTests
 .reduce(
 	(
 		promise,
-		integrationTest,
+		reproducibleManualTest,
 	) => (
 		promise
 		.then(() => (
-			new Promise(integrationTest)
+			new Promise(
+				reproducibleManualTest
+			)
 		))
 	),
 	(
