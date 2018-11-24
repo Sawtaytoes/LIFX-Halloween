@@ -11,12 +11,21 @@ const headers = {
 	'Content-Type': 'application/json',
 }
 
-const getCycles = () => Math.ceil(Math.random() * 3)
+const getCycles = () => (
+	Math
+	.ceil(
+		Math
+		.random() * 3
+	)
+)
+
 const getPeriod = () => 1
 
 const lifxEndpoint = `${lifxApi}v1/lights/${config.getLifxSelector()}:random/effects/breathe`
 
-const doScaryLightFlash = colorSet => (
+const doScaryLightFlash = (
+	colorSet,
+) => (
 	fetch(
 		lifxEndpoint,
 		{
@@ -25,8 +34,6 @@ const doScaryLightFlash = colorSet => (
 					...colorSet,
 					cycles: getCycles(),
 					period: getPeriod(),
-					// peak: 0,
-					// power_on: false,
 				})
 			),
 			headers,
@@ -40,7 +47,10 @@ const getDataFromPromise = (
 ) => (
 	from(
 		promise
-		.then(response => response.json())
+		.then(response => (
+			response
+			.json()
+		))
 	)
 )
 
@@ -59,7 +69,11 @@ const colorSets = [{
 	from_color: colors.purple,
 }]
 
-const getColorSetAtIndex = index => colorSets[index]
+const getColorSetAtIndex = (
+	index,
+) => (
+	colorSets[index]
+)
 
 const getRandomColorSetIndex = () => (
 	getRandomIndexFromItemCount(
