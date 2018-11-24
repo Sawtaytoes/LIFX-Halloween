@@ -1,17 +1,22 @@
-const { getYear, isWithinInterval } = require('date-fns/fp')
+const { isWithinInterval } = require('date-fns/fp')
+
+const {
+	getHalloweenEndTime,
+	getHalloweenStartTime,
+} = require('./halloweenTimes')
 
 const isDuringHalloweenNight = (
 	date = new Date(),
 ) => (
 	isWithinInterval({
 		end: (
-			new Date(
-				`${getYear(date)}-10-31 23:30`
+			getHalloweenEndTime(
+				date
 			)
 		),
 		start: (
-			new Date(
-				`${getYear(date)}-10-31 16:00`
+			getHalloweenStartTime(
+				date
 			)
 		),
 	})(
