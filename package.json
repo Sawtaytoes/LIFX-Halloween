@@ -34,6 +34,7 @@
     "ava": "^0.25.0",
     "date-fns": "^2.0.0-alpha.22",
     "eslint": "^5.7.0",
+    "fetch-mock": "^7.2.5",
     "node-fetch": "^2.2.0",
     "nodemon": "^1.18.4",
     "rxjs": "^6.3.3",
