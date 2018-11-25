@@ -1,21 +1,46 @@
 {
-  "private": true,
+  "name": "lifx-halloween",
+  "version": "1.0.0",
+  "description": "Flash a random light in a Group of LIFX bulbs during Halloween.",
+  "license": "MITNFA",
   "scripts": {
-    "server": "node index.js",
-    "server:debug": "node --inspect index.js",
-    "server:watch:debug": "nodemon --inspect index.js",
-    "server:watch": "nodemon index.js",
-    "start": "npm run server:watch"
+    "server": "node app.js",
+    "server:debug": "eslint . --fix && node --inspect app.js",
+    "server:watch": "eslint . --fix && nodemon app.js",
+    "server:watch:debug": "eslint . --fix && nodemon --inspect app.js",
+    "spec": "node ./utils/flashRandomLight.spec.js",
+    "start": "yarn server:watch",
+    "test": "eslint . && ava",
+    "test:watch": "eslint . && ava --watch"
   },
   "engines": {
-    "node": "^8.5.0",
-    "npm": "^5.4.1"
+    "node": ">=8.11.4",
+    "yarn": ">=1.6.0"
+  },
+  "_moduleAliases": {
+    "$config": "./config",
+    "$root": "./",
+    "$utils": "./utils"
+  },
+  "ava": {
+    "files": [
+      "utils/**/*.test.js"
+    ],
+    "sources": [
+      "**/*.js"
+    ]
   },
   "dependencies": {
-    "app-module-path": "^2.2.0",
-    "moment": "^2.19.1",
-    "node-fetch": "^1.7.3",
-    "nodemon": "^1.12.1",
-    "rxjs": "^5.4.3"
+    "@ghadyani-framework/eslint-config-base": "^0.0.3",
+    "@ghadyani-framework/eslint-config-node": "^0.0.3",
+    "@ghadyani-framework/setup-module-aliases": "^0.0.2",
+    "ava": "^0.25.0",
+    "date-fns": "^2.0.0-alpha.22",
+    "eslint": "^5.7.0",
+    "fetch-mock": "^7.2.5",
+    "node-fetch": "^2.2.0",
+    "nodemon": "^1.18.4",
+    "rxjs": "^6.3.3",
+    "rxjs-compat": "^6.3.3"
   }
 }
