@@ -26,7 +26,7 @@ Object
 	&& delete configEnv[key]
 ))
 
-const config = (
+const combinedConfig = (
 	Object
 	.assign(
 		{},
@@ -36,14 +36,13 @@ const config = (
 	)
 )
 
-config
-.port = Number(config.port)
+const config = {
+	isDev: () => combinedConfig.nodeEnv === 'development',
+	isProd: () => combinedConfig.nodeEnv === 'production',
 
-module.exports = {
-	isDev: () => config.nodeEnv === 'development',
-	isProd: () => config.nodeEnv === 'production',
-
-	getApiToken: () => config.apiToken,
-	getEnv: () => config.nodeEnv,
-	getLifxSelector: () => config.lifxSelector,
+	getApiToken: () => combinedConfig.apiToken,
+	getEnv: () => combinedConfig.nodeEnv,
+	getLifxSelector: () => combinedConfig.lifxSelector,
 }
+
+module.exports = config
