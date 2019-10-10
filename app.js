@@ -1,12 +1,9 @@
-require('@ghadyani-framework/setup-module-aliases')(__dirname)
-
 const { addYears } = require('date-fns/fp')
-const { finalize, switchMap, takeUntil, tap } = require('rxjs/operators')
+const { finalize, startWith, switchMap, takeUntil, tap } = require('rxjs/operators')
 const { interval, timer } = require('rxjs')
 
-const config = require('$config')
-
 const {
+	config,
 	flashRandomLight,
 	getTimeUntilHalloweenEnds,
 	getTimeUntilHalloweenStarts,
