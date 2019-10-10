@@ -12,11 +12,31 @@ Create a `localConfig.js` file in your project's root directory with these conte
 module.exports = {
 	apiToken: 'c180e4553d9b3d61a0536055555a7d96dba3cea4154b171b5522b915a572b86f',
 	lifxSelector: 'group:Front Porch',
+
+	// Optional
+	halloweenStartTime: '10-31 16:00',
+	halloweenEndTime: '10-31 22:30',
 }
 ```
 
+#### Required
+- `apiToken`
+- `lifxSelector`
+
+#### Optional
+- `halloweenStartTime`
+- `halloweenEndTime`
+
 #### Environment Variables
 Instead of creating a local config file, you might be hosting this project online. If you do that, you'll want to use environment variables instead.
+
+#### Required
+- `API_TOKEN`
+- `LIFX_SELECTOR`
+
+#### Optional
+- `HALLOWEEN_START_TIME`
+- `HALLOWEEN_END_TIME`
 
 ### Config Vars
 
@@ -42,6 +62,16 @@ For simplicity, you can simply follow these guidelines:
 - For group, use `group:Group Name`.
 - For light, use `label:Light Name`.
 - For all lights, use `all`.
+
+#### Start and End Times
+- **Local Config File:** `halloweenStartTime`
+- **Local Config File:** `halloweenEndTime`
+- **Environment Variable:** `HALLOWEEN_START_TIME`
+- **Environment Variable:** `HALLOWEEN_END_TIME`
+
+The format is `MM-DD hh:mm` such as `10-31 16:00`. The month, date, then the time in 24h military format.
+
+These values include the start and end times for when random light flickering occurs. Currently, this package does not support executing daily during a set time period. You can always create a PR or write your own code to handle this use case in your own project.
 
 ## Example Usage
 ### Simple Version
