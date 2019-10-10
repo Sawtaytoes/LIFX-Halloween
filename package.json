@@ -9,7 +9,7 @@
     "server:watch": "eslint . --fix && nodemon app.js",
     "server:watch:debug": "eslint . --fix && nodemon --inspect app.js",
     "spec": "node ./utils/flashRandomLight.spec.js",
-    "start": "yarn server:watch",
+    "start": "yarn && yarn server:watch",
     "test": "eslint . && ava",
     "test:watch": "eslint . && ava --watch"
   },
