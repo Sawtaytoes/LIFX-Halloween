@@ -20,11 +20,11 @@ const getTimeUntilHalloweenEnds = (
 	date = new Date(),
 ) => (
 	differenceInMilliseconds(
+		date,
+	)(
 		getHalloweenEndTime(
 			date,
 		)
-	)(
-		date,
 	)
 )
 
@@ -32,11 +32,11 @@ const getTimeUntilHalloweenStarts = (
 	date = new Date(),
 ) => (
 	differenceInMilliseconds(
+		date,
+	)(
 		getHalloweenStartTime(
 			date,
 		)
-	)(
-		date,
 	)
 )
 
