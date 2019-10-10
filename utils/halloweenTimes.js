@@ -4,7 +4,7 @@ const getHalloweenEndTime = (
 	date = new Date(),
 ) => (
 	new Date(
-		`${getYear(date)}-10-31 16:00`
+		`${getYear(date)}-10-31 22:30`
 	)
 )
 
