@@ -39,15 +39,11 @@ Object
 	&& delete envConfig[key]
 ))
 
-const combinedConfig = (
-	Object
-	.assign(
-		{},
-		defaultConfig,
-		envConfig,
-		customConfig,
-	)
-)
+const combinedConfig = {
+	...defaultConfig,
+	...envConfig,
+	...customConfig,
+}
 
 const config = {
 	isDev: () => combinedConfig.nodeEnv === 'development',
