@@ -19,7 +19,6 @@
   },
   "_moduleAliases": {
     "$config": "./config",
-    "$root": "./",
     "$utils": "./utils"
   },
   "ava": {

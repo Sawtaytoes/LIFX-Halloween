@@ -1,9 +1,18 @@
+const fs = require('fs')
+
 let configCustom = {}
 
 try {
-	configCustom = require('$root/localConfig')
+	const rootPath = (
+		fs
+		.realpathSync(
+			process.cwd()
+		)
+	)
+
+	configCustom = require(`${rootPath}/localConfig`)
 }
-catch (e) {
+catch (exception) {
 	// Do Nothing
 }
 
