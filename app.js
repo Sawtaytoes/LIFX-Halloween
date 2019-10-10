@@ -31,6 +31,7 @@ const getHalloweenFlasherObservable = (
 		switchMap(() => (
 			interval(10000)
 			.pipe(
+				startWith(0),
 				takeUntil(
 					timer(
 						getTimeUntilHalloweenEnds()
