@@ -1,10 +1,12 @@
 const { differenceInMilliseconds, getYear } = require('date-fns/fp')
 
+const config = require('$config')
+
 const getHalloweenEndTime = (
 	date = new Date(),
 ) => (
 	new Date(
-		`${getYear(date)}-10-31 22:30`
+		`${getYear(date)}-${config.getHalloweenEndTime()}`
 	)
 )
 
@@ -12,7 +14,7 @@ const getHalloweenStartTime = (
 	date = new Date(),
 ) => (
 	new Date(
-		`${getYear(date)}-10-31 16:00`
+		`${getYear(date)}-${config.getHalloweenStartTime()}`
 	)
 )
 

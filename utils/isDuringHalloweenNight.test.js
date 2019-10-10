@@ -1,3 +1,4 @@
+require('better-module-alias')(process.cwd())
 const test = require('ava')
 
 const isDuringHalloweenNight = require('./isDuringHalloweenNight')
