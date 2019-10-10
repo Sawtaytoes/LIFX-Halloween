@@ -30,17 +30,17 @@
     ]
   },
   "dependencies": {
-    "@ghadyani-framework/setup-module-aliases": "^0.0.2",
+    "better-module-alias": "^1.0.1",
     "date-fns": "^2.4.1",
     "node-fetch": "^2.2.0",
     "rxjs": "^6.3.3"
   },
   "devDependencies": {
-    "@ghadyani-framework/eslint-config-base": "^0.0.3",
-    "@ghadyani-framework/eslint-config-node": "^0.0.3",
-    "ava": "^0.25.0",
-    "eslint": "^5.7.0",
-    "fetch-mock": "^7.2.5",
-    "nodemon": "^1.18.4"
+    "@ghadyani-eslint/eslint-config-core": "^1.1.6",
+    "@ghadyani-eslint/eslint-config-node": "^1.1.6",
+    "ava": "^2.4.0",
+    "eslint": "^6.5.1",
+    "fetch-mock": "^7.5.1",
+    "nodemon": "^1.19.3"
   }
 }

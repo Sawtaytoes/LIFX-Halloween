@@ -1,4 +1,4 @@
-require('@ghadyani-framework/setup-module-aliases')(__dirname)
+require('better-module-alias')(__dirname)
 
 const config = require('$config')
 const flashRandomLight = require('$utils/flashRandomLight')
