@@ -1,6 +1,6 @@
 {
   "name": "lifx-halloween",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Flash a random light in a Group of LIFX bulbs during Halloween.",
   "license": "MITNFA",
   "scripts": {
