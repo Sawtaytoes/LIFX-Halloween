@@ -21,9 +21,10 @@ const createScaryLightFlasher = (
 	ajaxFetcher,
 ) => (
 	lifxSelector,
-) => (
+) => ([
+	lightsList = [],
 	colorSet = {},
-) => (
+]) => (
 	errorWrapper(
 		(
 			!lifxSelector
@@ -36,8 +37,9 @@ const createScaryLightFlasher = (
 				lifxApi
 				.concat('/v1')
 				.concat('/lights')
-				.concat(`/${lifxSelector}`)
-				.concat(':random/effects/breathe')
+				.concat(`/id:${lightsList[Math.floor(Math.random()*lightsList.length)].id}`)
+				.concat('/effects')
+				.concat('/breathe')
 			),
 			{
 				body: (
@@ -45,6 +47,7 @@ const createScaryLightFlasher = (
 						...colorSet,
 						cycles: getCycles(),
 						period: getPeriod(),
+						fast: true,
 					})
 				),
 				headers,
