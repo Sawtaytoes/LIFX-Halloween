@@ -31,7 +31,6 @@ const flashRandomLight = (
 			),
 		)
 		.pipe(
-			tap(console.log),
 			switchMap(
 				doScaryLightFlash(
 					lifxSelector,
